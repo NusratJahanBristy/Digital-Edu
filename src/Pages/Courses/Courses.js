@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import LeftSide from '../LeftSide/LeftSide';
 import RightSide from '../RighSide/RightSide';
 
 const Courses = () => {
@@ -8,7 +9,7 @@ const Courses = () => {
             <Container>
                 <Row>
                     <Col lg='2'>
-                        <h2>left</h2>
+                        <LeftSide></LeftSide>
                     </Col>
                     <Col lg='10'>
                         <RightSide></RightSide>
