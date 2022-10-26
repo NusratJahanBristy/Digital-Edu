@@ -31,7 +31,7 @@ export const routes = createBrowserRouter([
               
             },
             {
-                path:'/blog/:id',
+                path:'/blog',
                 element:<Blog></Blog>
             },
             {
