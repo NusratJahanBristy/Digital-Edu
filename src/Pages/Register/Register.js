@@ -10,12 +10,11 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import Form from 'react-bootstrap/Form';
 import './Register.css'
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const Register = () => {
-
-
-
-  const { providerLogin,createUser } = useContext(AuthContext);
+  const [error, setError] = useState('')
+  const { providerLogin, createUser } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider()
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
@@ -25,27 +24,31 @@ const Register = () => {
       })
       .catch(error => console.error(error))
   }
-  const handleSubmit=event=>{
+  const handleSubmit = event => {
     event.preventDefault();
-    const form=event.target;
-    const name=form.name.value;
-    const photoURL=form.photoURL.value;
-    const email=form.email.value;
-    const password=form.password.value;
-    console.log(name,photoURL,email,password)
+    const form = event.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, photoURL, email, password)
 
-    createUser(email,password)
-    .then(result=>{
-      const user=result.user;
-      console.log(user)
-    })
-    .catch(e=>console.error(e));
+    createUser(email, password)
+      .then(result => {
+        const user = result.user;
+        setError('')
+        console.log(user)
+      })
+      .catch(e => {
+        console.error(e)
+        setError(e.message)
+      });
 
   }
   return (
     <div >
-      <Form  onSubmit={handleSubmit} className='register-form'>
-      <h1 className='text-center'>Create Your Account</h1>
+      <Form onSubmit={handleSubmit} className='register-form'>
+        <h1 className='text-center'>Create Your Account</h1>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label> Name</Form.Label>
           <Form.Control name='name' type="text" placeholder="Your Name" />
@@ -67,25 +70,26 @@ const Register = () => {
           <Form.Control name='password' type="password" placeholder="Password" required />
         </Form.Group>
 
-        <Form.Text className="text-danger">
-          We'll never share your email with anyone else.
-        </Form.Text>
+       
         <Button className='btn-md btn-block btn-dark ' type="submit">
           Register
         </Button>
+        <Form.Text className="text-danger">
+        {error}
+        </Form.Text>
         <div className='text-center pt-3'>
-Or continue with your social account..
-      </div>
-        <ButtonGroup vertical  className=''>
-        <Button onClick={handleGoogleSignIn} className='mt-3 mb-3 btn-lg btn-block btn-warning'><FcGoogle></FcGoogle>Login with Google</Button>
-        <Button className='btn-lg btn-block btn-dark'><FaGithub></FaGithub> Log in with Github</Button>
-      </ButtonGroup>
+          Or continue with your social account..
+        </div>
+        <ButtonGroup vertical className=''>
+          <Button onClick={handleGoogleSignIn} className='mt-3 mb-3 btn-lg btn-block btn-warning'><FcGoogle></FcGoogle>Login with Google</Button>
+          <Button className='btn-lg btn-block btn-dark'><FaGithub></FaGithub> Log in with Github</Button>
+        </ButtonGroup>
         {/* <FaGithub className='mt-3 mb-3'></FaGithub> */}
-      <div className='text-center'>
-      <Link to='/login'>Log In</Link>
-        <span className='p-2'></span>
-       
-      </div>
+        <div className='text-center'>
+          <Link to='/login'>Log In</Link>
+          <span className='p-2'></span>
+
+        </div>
       </Form>
 
 
