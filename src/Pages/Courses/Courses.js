@@ -8,7 +8,7 @@ const Courses = () => {
         <div>
             <Container>
                 <Row>
-                    <Col lg='2'>
+                    <Col lg='2' className='d-none d-lg-block'>
                         <LeftSide></LeftSide>
                     </Col>
                     <Col lg='10'>

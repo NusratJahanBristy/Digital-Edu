@@ -7,6 +7,7 @@ import Login from "../../Pages/Login/Login";
 import Courses from "../../Pages/Courses/Courses";
 import Register from "../../Pages/Register/Register";
 
+
 export const routes = createBrowserRouter([
 
     {
@@ -15,6 +16,10 @@ export const routes = createBrowserRouter([
         children: [
             {
                 path:'/',
+                element:<Home></Home>
+            },
+            {
+                path:'/home',
                 element:<Home></Home>
             },
             {
