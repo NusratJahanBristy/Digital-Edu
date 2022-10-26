@@ -39,11 +39,11 @@ export const routes = createBrowserRouter([
             },
             {
                 path:'/blog',
-                element:<PrivateRoute><Blog></Blog></PrivateRoute>
+                element:<Blog></Blog>
             },
             {
                 path:'/faq',
-                element:<FAQ></FAQ>
+                element:<PrivateRoute><FAQ></FAQ></PrivateRoute>
             },
             {
                 path:'/register',

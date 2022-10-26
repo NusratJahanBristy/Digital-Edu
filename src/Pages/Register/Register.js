@@ -14,7 +14,7 @@ import { useState } from 'react';
 
 const Register = () => {
   const [error, setError] = useState('')
-  const { providerLogin, createUser } = useContext(AuthContext);
+  const { providerLogin, createUser,updateUserProfile } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider()
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
@@ -42,8 +42,19 @@ const Register = () => {
       .catch(e => {
         console.error(e)
         setError(e.message)
+        form.reset();
+        handleUpdateUserProfile(name,photoURL)
       });
 
+  }
+  const handleUpdateUserProfile=(name,photoURL)=>{
+const profile={
+  displayName:name,
+  photoURL: photoURL
+}
+updateUserProfile(profile)
+.then(()=>{})
+.catch(error=>console.log(error))
   }
   return (
     <div >
