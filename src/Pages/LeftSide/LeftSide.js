@@ -16,7 +16,7 @@ fetch('http://localhost:5000/news-categories')
     return (
         <div>
             <h1>All Courses List:{categories.length}</h1>
-            <div>
+            <div className='text-danger'>
                 {
                     categories.map(category=><p key={category.id}>
                         <Link to={`/courses/${category.id}`}>{category.name}</Link>
