@@ -7,6 +7,7 @@ import Login from "../../Pages/Login/Login";
 import Courses from "../../Pages/Courses/Courses";
 import Register from "../../Pages/Register/Register";
 import RightSide from "../../Pages/RighSide/RightSide";
+import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
@@ -28,13 +29,13 @@ export const routes = createBrowserRouter([
             {
                 path:'/courses',
                 element:<Courses></Courses>,
-                // loader: ({params})=>fetch (`http://localhost:5000/category/${params.id}`)
+                loader: ()=>fetch (`http://localhost:5000/courses`)
               
             },
             {
                 path:'/rightside',
-                element:<RightSide></RightSide>,
-                loader: ({params})=>fetch (`http://localhost:5000/category/${params.id}`)
+                element:<RightSide></RightSide>
+                // loader: ({params})=>fetch (`http://localhost:5000/category/${params.id}`)
               
             },
             {
@@ -56,8 +57,12 @@ export const routes = createBrowserRouter([
             {
                 path:'/rightside',
                 element:<RightSide></RightSide>
-             
-                
+              
+            },
+            {
+                path: '*', element:<ErrorPage></ErrorPage>
+               
+              
             }
         ]
     }

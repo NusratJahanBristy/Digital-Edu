@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { toast } from 'react-toastify';
 import './Login.css'
 
 
@@ -23,6 +24,7 @@ const from=location.state?.from?.pathname || '/';
     signIn(email, password)
       .then(result => {
         const user = result.user;
+        toast.success('Successfully Login', { autoClose: 3000 })
         console.log(user)
         form.reset();
         setError('');

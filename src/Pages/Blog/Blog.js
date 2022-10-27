@@ -5,11 +5,8 @@ import './Blog.css'
 
 const Blog = () => {
     return (
-     
-      
-         
-             <Col lg='6' className=' blog-css'>
-             <div className='container'>
+       <Col lg='6' className=' blog-css '>
+             <div className='container '>
             <Accordion >
       <Accordion.Item eventKey="0">
         <Accordion.Header >what is cors?</Accordion.Header>

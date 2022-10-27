@@ -19,7 +19,7 @@ fetch('http://localhost:5000/courses-categories')
             <div className=''>
                 {
                     categories.map(category=><p key={category.id}>
-                        <Link to={`/courses/${category.id}`}>{category.name}</Link>
+                        <Link className='text-decoration-none' to={`/courses/${category.id}`}>{category.name}</Link>
                     </p>)
                 }
             </div>

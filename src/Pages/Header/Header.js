@@ -9,6 +9,7 @@ import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import LeftSide from '../LeftSide/LeftSide';
+import { FaMoon,FaSun } from "react-icons/fa";
 // import Button from 'react-bootstrap/Button';
 
 const Header = () => {
@@ -19,7 +20,7 @@ const Header = () => {
     .catch(error=>console.error(error))
   }
   return (
-    <Navbar collapseOnSelect className='mb-4' expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect className='' expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand as={Link} to="/">Digital Edu</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -44,7 +45,13 @@ const Header = () => {
             </NavDropdown> */}
           </Nav>
           <Nav>
+            
             <Nav.Link href="#deets">
+            <>
+                <FaMoon></FaMoon>
+                <FaSun></FaSun>
+               
+                </>
               {
                 user?.uid?
                <>
@@ -53,15 +60,15 @@ const Header = () => {
                </>
                 :
                 <>
-                <Link to ='/login'>Login</Link>
-                <Link to ='/register'>Register</Link>
+                <Link className='text-light mx-2 text-decoration-none ' to ='/login'>Login</Link>
+                <Link className='text-light mx-2 text-decoration-none' to ='/register'>Register</Link>
                 </>
               }
            </Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
               
             {user?.photoURL ?
-                <Image style={{ height: '30px' }} roundedCircle
+                <Image style={{ height: '40px',width: '40px' }} roundedCircle
                  src={user?.photoURL}></Image>
                 : <FaUser></FaUser>}
 

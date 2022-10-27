@@ -1,13 +1,13 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 
-const RightSide = () => {
-    const courses=useLoaderData();
-    console.log(courses)
+const RightSide = ({course}) => {
+const {id,title,details,img}=course
     return (
         <div>
-            <h1>thid is rightsside</h1>
-            {/* <h4>{courses.length}</h4> */}
+            <h1>{title}</h1>
+            <img src={img}/>
+    
         </div>
     );
 };

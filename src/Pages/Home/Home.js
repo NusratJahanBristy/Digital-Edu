@@ -7,7 +7,6 @@ const Home = () => {
   console.log(courses)
     return (
         <div>
-          <h5>home</h5>
           <BrandCarousel></BrandCarousel>
           {/* <h3>digital{courses.length}</h3> */}
         </div>
