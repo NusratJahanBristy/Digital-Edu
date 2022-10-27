@@ -5,7 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 // import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './Register.css'
@@ -14,8 +14,9 @@ import { useState } from 'react';
 
 const Register = () => {
   const [error, setError] = useState('')
-  const { providerLogin, createUser,updateUserProfile } = useContext(AuthContext);
-  const googleProvider = new GoogleAuthProvider()
+  const { providerLogin, createUser,updateUserProfile ,githubSignIn} = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider=new GithubAuthProvider();
   const handleGoogleSignIn = () => {
     providerLogin(googleProvider)
       .then(result => {
@@ -56,6 +57,16 @@ updateUserProfile(profile)
 .then(()=>{})
 .catch(error=>console.log(error))
   }
+  const handleGithubSignIn=()=>{
+    githubSignIn(githubProvider)
+.then(result=>{
+  const user=result.user;
+  console.log(user);
+})
+.catch(error=>{
+  console.log('error',error)
+})
+  }
   return (
     <div >
       <Form onSubmit={handleSubmit} className='register-form'>
@@ -93,7 +104,7 @@ updateUserProfile(profile)
         </div>
         <ButtonGroup vertical className=''>
           <Button onClick={handleGoogleSignIn} className='mt-3 mb-3 btn-lg btn-block btn-warning'><FcGoogle></FcGoogle>Login with Google</Button>
-          <Button className='btn-lg btn-block btn-dark'><FaGithub></FaGithub> Log in with Github</Button>
+          <Button onClick={handleGithubSignIn} className='btn-lg btn-block btn-dark'><FaGithub></FaGithub> Log in with Github</Button>
         </ButtonGroup>
         {/* <FaGithub className='mt-3 mb-3'></FaGithub> */}
         <div className='text-center'>
