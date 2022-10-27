@@ -9,6 +9,8 @@ import Register from "../../Pages/Register/Register";
 import RightSide from "../../Pages/RighSide/RightSide";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import LeftSide from "../../Pages/LeftSide/LeftSide";
+import CoursesDetails from "../../Pages/CoursesDetails/CoursesDetails";
 
 
 export const routes = createBrowserRouter([
@@ -33,9 +35,9 @@ export const routes = createBrowserRouter([
               
             },
             {
-                path:'/rightside',
-                element:<RightSide></RightSide>
-                // loader: ({params})=>fetch (`http://localhost:5000/category/${params.id}`)
+                path:'/leftSide/:id',
+                element:<LeftSide></LeftSide>,
+                loader: ({params})=>fetch (`http://localhost:5000/category/${params.id}`)
               
             },
             {
@@ -60,10 +62,16 @@ export const routes = createBrowserRouter([
               
             },
             {
+                path:'/coursesetails',
+                element:<CoursesDetails></CoursesDetails>
+              
+            },
+            {
                 path: '*', element:<ErrorPage></ErrorPage>
                
               
             }
+            
         ]
     }
 

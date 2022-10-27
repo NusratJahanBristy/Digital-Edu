@@ -56,7 +56,7 @@ const Header = () => {
                 user?.uid?
                <>
                 <span>  {user?.displayName}</span>
-                <Button variant='light' onClick={handleLogOut}>logout</Button>
+                <Button className='mx-2' variant='light' onClick={handleLogOut}>Logout</Button>
                </>
                 :
                 <>

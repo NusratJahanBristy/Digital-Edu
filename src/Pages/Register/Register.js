@@ -14,17 +14,10 @@ import { useState } from 'react';
 
 const Register = () => {
   const [error, setError] = useState('')
-  const { providerLogin, createUser,updateUserProfile ,githubSignIn} = useContext(AuthContext);
+  const { providerLogin, createUser, updateUserProfile, githubSignIn } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
-  const githubProvider=new GithubAuthProvider();
-  const handleGoogleSignIn = () => {
-    providerLogin(googleProvider)
-      .then(result => {
-        const user = result.user;
-        console.log(user);
-      })
-      .catch(error => console.error(error))
-  }
+  const githubProvider = new GithubAuthProvider();
+
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.target;
@@ -44,28 +37,36 @@ const Register = () => {
         console.error(e)
         setError(e.message)
         form.reset();
-        handleUpdateUserProfile(name,photoURL)
+        handleUpdateUserProfile(name, photoURL)
       });
 
   }
-  const handleUpdateUserProfile=(name,photoURL)=>{
-const profile={
-  displayName:name,
-  photoURL: photoURL
-}
-updateUserProfile(profile)
-.then(()=>{})
-.catch(error=>console.log(error))
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch(error => console.error(error))
   }
-  const handleGithubSignIn=()=>{
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL
+    }
+    updateUserProfile(profile)
+      .then(() => { })
+      .catch(error => console.log(error))
+  }
+  const handleGithubSignIn = () => {
     githubSignIn(githubProvider)
-.then(result=>{
-  const user=result.user;
-  console.log(user);
-})
-.catch(error=>{
-  console.log('error',error)
-})
+      .then(result => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch(error => {
+        console.log('error', error)
+      })
   }
   return (
     <div >
@@ -92,12 +93,12 @@ updateUserProfile(profile)
           <Form.Control name='password' type="password" placeholder="Password" required />
         </Form.Group>
 
-       
+
         <Button className='btn-md btn-block btn-dark ' type="submit">
           Register
         </Button>
         <Form.Text className="text-danger">
-        {error}
+          {error}
         </Form.Text>
         <div className='text-center pt-3'>
           Or continue with your social account..
