@@ -1,13 +1,9 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-// import CoursesDetails from '../CoursesDetails/CoursesDetails';
 
 const LeftSide = () => {
-    // const course=useLoaderData();
-    // console.log(course)
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
@@ -18,7 +14,6 @@ const LeftSide = () => {
     return (
         <div>
             <h3 className='py-4'>All Courses List</h3>
-            {/* <h3>{course.title}</h3> */}
             <div className=''>
                 {
                     categories.map(category => <p key={category.id}>

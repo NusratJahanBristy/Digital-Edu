@@ -12,6 +12,7 @@ import LeftSide from "../../Pages/LeftSide/LeftSide";
 import CoursesDetails from "../../Pages/CoursesDetails/CoursesDetails";
 import CheckOut from "../../Pages/CheckOut/CheckOut";
 import Category from "../../Pages/Category/Category";
+import CardSummery from "../../Pages/shared/CardSummuery/CardSummery";
 export const routes = createBrowserRouter([
     {
         path: '/',
@@ -69,15 +70,14 @@ export const routes = createBrowserRouter([
                 element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
 
             },
-            // {
-            //     path:'/courses/:id',
-            //     element:<CardSummery></CardSummery>,
-            //     loader: ({params})=>fetch (`http://localhost:5000/courses/${params.id}`)
+            {
+                path: '/category/:id',
+                element: <CardSummery></CardSummery>,
+                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
 
-            // },
+            },
             {
                 path: '*', element: <ErrorPage></ErrorPage>
-
 
             }
 

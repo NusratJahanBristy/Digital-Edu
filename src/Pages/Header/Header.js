@@ -9,9 +9,24 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import LeftSide from '../LeftSide/LeftSide';
 import { FaMoon, FaSun } from "react-icons/fa";
+import { useState } from 'react';
+import { useEffect } from 'react';
+import '../../App.css'
 
 const Header = () => {
+  const [color, setColor] = useState("light");
   const { user, logOut } = useContext(AuthContext);
+  const handleThemeToggle = () => {
+    if (color === "light") {
+      setColor("dark");
+    } else {
+      setColor("light");
+    }
+  };
+  useEffect(() => {
+    document.body.className = color;
+  }, [color]);
+
   const handleLogOut = () => {
     logOut()
       .then(() => { })
@@ -30,12 +45,19 @@ const Header = () => {
           </Nav>
           <Nav>
 
-            <Nav.Link href="#deets">
-              <>
-                <FaMoon></FaMoon>
-                <FaSun></FaSun>
+            <Nav className="me-3">
+              {color === "light" ? (
+                <button className="border border-light" onClick={handleThemeToggle}>
+                  <FaMoon></FaMoon>
+                </button>
+              ) : (
+                <button className="border border-light" onClick={handleThemeToggle}>
+                  <FaSun></FaSun>
+                </button>
+              )}
+            </Nav>
 
-              </>
+            <Nav.Link href="#deets">
               {
                 user?.uid ?
                   <>
@@ -58,7 +80,7 @@ const Header = () => {
 
             </Nav.Link>
           </Nav>
-          <div className='d-lg-none'>
+          <div className='d-lg-none '>
             <LeftSide></LeftSide>
           </div>
         </Navbar.Collapse>

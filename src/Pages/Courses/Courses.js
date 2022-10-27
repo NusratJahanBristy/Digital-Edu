@@ -1,12 +1,9 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
-
 import LeftSide from '../LeftSide/LeftSide';
-import RightSide from '../RighSide/RightSide';
 import CardSummery from '../shared/CardSummuery/CardSummery';
 import './Courses.css';
-// import RightSide from '../RighSide/RightSide';
 
 const Courses = () => {
     const courses = useLoaderData();

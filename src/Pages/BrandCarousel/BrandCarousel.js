@@ -14,7 +14,7 @@ function BrandCarousel() {
         />
         <Carousel.Caption>
           <h3>Learning is Our Passion</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <p>“Tell me and I forget, teach me and I may remember, involve me and I learn.” ...</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -24,8 +24,8 @@ function BrandCarousel() {
           alt="Second slide"
         />
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>Learning is makes us more knowledgeable</h3>
+          <p>In learning you will teach, and in teaching you will learn.” ...</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -36,9 +36,9 @@ function BrandCarousel() {
         />
 
         <Carousel.Caption>
-          <h3>Third slide label</h3>
+          <h3>Learning learn us how to be humble</h3>
           <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          “Learning never exhausts the mind.”
           </p>
         </Carousel.Caption>
       </Carousel.Item>

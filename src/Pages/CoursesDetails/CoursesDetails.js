@@ -5,6 +5,9 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import './CoursesDetails.css'
 import { useLoaderData } from 'react-router-dom';
+import { FaDownload } from "react-icons/fa";
+import Pdf from "react-to-pdf";
+const ref = React.createRef();
 
 const CoursesDetails = () => {
     const courses = useLoaderData();
@@ -18,8 +21,14 @@ const CoursesDetails = () => {
                         <LeftSide></LeftSide>
                     </Col>
                     <Col lg='8'>
-                        <div >
+                    
+                        <div ref={ref}>
                             <Card  >
+                            <Pdf targetRef={ref} filename="code-example.pdf">
+        {({ toPdf }) => <button onClick={toPdf} className='p-2 m-2 bg-dark text-white'><FaDownload></FaDownload></button>}
+      </Pdf>
+
+                             
                                 <Card.Img variant="top" className='card-img' src={img} />
                                 <Card.Body>
                                     <Card.Title>{title}</Card.Title>
