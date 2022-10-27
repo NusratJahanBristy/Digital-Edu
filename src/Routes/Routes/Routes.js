@@ -13,6 +13,7 @@ import CoursesDetails from "../../Pages/CoursesDetails/CoursesDetails";
 import CheckOut from "../../Pages/CheckOut/CheckOut";
 import Category from "../../Pages/Category/Category";
 import CardSummery from "../../Pages/shared/CardSummuery/CardSummery";
+import CategoriesDetails from "../../Pages/CategoriesDetails/CategoriesDetails";
 export const routes = createBrowserRouter([
     {
         path: '/',
@@ -29,20 +30,21 @@ export const routes = createBrowserRouter([
             {
                 path: '/courses',
                 element: <Courses></Courses>,
-                loader: () => fetch(`http://localhost:5000/courses`)
+                loader: () => fetch(`https://digital-edu-server.vercel.app/courses`)
 
             },
             {
                 path: '/category/:id',
                 element: <Category></Category>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({ params }) => fetch(`https://digital-edu-server.vercel.app/category/${params.id}`)
 
             },
             {
                 path: '/leftSide/:id',
                 element: <LeftSide></LeftSide>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://digital-edu-server.vercel.app/courses/${params.id}`)
             },
+           
             {
                 path: '/blog',
                 element: <Blog></Blog>
@@ -62,7 +64,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/courses/:id',
                 element: <CoursesDetails></CoursesDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://digital-edu-server.vercel.app/courses/${params.id}`)
 
             },
             {
@@ -71,9 +73,9 @@ export const routes = createBrowserRouter([
 
             },
             {
-                path: '/category/:id',
-                element: <CardSummery></CardSummery>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                path: '/singleCategory/:id',
+                element: <CategoriesDetails></CategoriesDetails>,
+                loader: ({ params }) => fetch(`https://digital-edu-server.vercel.app/category/${params.id}`)
 
             },
             {

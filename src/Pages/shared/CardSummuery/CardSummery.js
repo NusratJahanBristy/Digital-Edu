@@ -6,16 +6,16 @@ import './CardSummery.css'
 
 const CardSummery = ({ course }) => {
     const { id, title, details, img } = course || {};
-    console.log(course)
+    console.log(course, title)
     return (
-        <Card >
+        <Card>
             <Card.Img variant="top" className='card-img' src={img} />
             <Card.Body>
-                <Card.Title> {title}</Card.Title>
+                <Card.Title>{title}</Card.Title>
                 <Card.Text>
                     {
-                        details.length > 200 ?
-                            <p>{details.slice(0, 220) + '...'}<Link to={`/courses/${id}`}>Read More</Link></p>
+                        details?.length > 200 ?
+                            <p>{details?.slice(0, 220) + '...'}<Link to={`/courses/${id}`}>Read More</Link></p>
                             : <p>{details}</p>
                     }
                 </Card.Text>

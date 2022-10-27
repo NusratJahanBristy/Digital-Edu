@@ -4,7 +4,7 @@ import CardSummery from '../shared/CardSummuery/CardSummery';
 
 const Category = () => {
     const categories = useLoaderData()
-    console.log(categories)
+    // console.log(categories)
 
     return (
         <div>

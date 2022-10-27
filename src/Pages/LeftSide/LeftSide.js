@@ -7,17 +7,17 @@ const LeftSide = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/courses-categories')
+        fetch('https://digital-edu-server.vercel.app/courses-categories')
             .then(res => res.json())
             .then(data => setCategories(data))
     }, [])
     return (
         <div>
-            <h3 className='py-4'>All Courses List</h3>
+            <h3 className='py-4 text-primary'>All Courses List</h3>
             <div className=''>
                 {
                     categories.map(category => <p key={category.id}>
-                        <Link className='text-decoration-none text-dark' to={`/category/${category.id}`}>
+                        <Link className='text-decoration-none text-primary' to={`/singleCategory/${category.id}`}>
                             {category.name}</Link>
 
                     </p>)
