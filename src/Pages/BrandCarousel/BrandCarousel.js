@@ -2,10 +2,10 @@ import Carousel from 'react-bootstrap/Carousel';
 import c1 from '../../assets/covers/c1.jpg'
 import c2 from '../../assets/covers/c2.jpg'
 import c3 from '../../assets/covers/c3.jpg'
-
+import './BrandCarousel.css'
 function BrandCarousel() {
   return (
-    <Carousel className='container'>
+    <Carousel className='container paddign-css'>
       <Carousel.Item>
         <img
           className="d-block w-100"
@@ -23,7 +23,6 @@ function BrandCarousel() {
           src={c2}
           alt="Second slide"
         />
-
         <Carousel.Caption>
           <h3>Second slide label</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

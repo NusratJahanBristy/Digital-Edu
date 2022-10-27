@@ -5,8 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-// import Button from 'react-bootstrap/Button';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import Form from 'react-bootstrap/Form';
 import './Register.css'
 import { Link } from 'react-router-dom';
@@ -75,25 +74,19 @@ const Register = () => {
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label> Name</Form.Label>
           <Form.Control name='name' type="text" placeholder="Your Name" />
-
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Photo URL</Form.Label>
           <Form.Control name='photoURL' type="text" placeholder="Photo URL" />
-
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email </Form.Label>
           <Form.Control name='email' type="email" placeholder="Enter email" required />
-
         </Form.Group>
-
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control name='password' type="password" placeholder="Password" required />
         </Form.Group>
-
-
         <Button className='btn-md btn-block btn-dark ' type="submit">
           Register
         </Button>
@@ -107,22 +100,12 @@ const Register = () => {
           <Button onClick={handleGoogleSignIn} className='mt-3 mb-3 btn-lg btn-block btn-warning'><FcGoogle></FcGoogle>Login with Google</Button>
           <Button onClick={handleGithubSignIn} className='btn-lg btn-block btn-dark'><FaGithub></FaGithub> Log in with Github</Button>
         </ButtonGroup>
-        {/* <FaGithub className='mt-3 mb-3'></FaGithub> */}
         <div className='text-center'>
           <Link to='/login'>Log In</Link>
           <span className='p-2'></span>
 
         </div>
       </Form>
-
-
-      {/* <ButtonGroup vertical  className=''>
-        <Button onClick={handleGoogleSignIn} className='mb-2' variant='outline-primary'><FcGoogle></FcGoogle>Login with Google</Button>
-        <Button variant='outline-primary mb-4'><FaGithub></FaGithub> Log in with Github</Button>
-      </ButtonGroup> */}
-
-
-
     </div>
   );
 };

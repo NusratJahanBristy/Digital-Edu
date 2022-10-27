@@ -1,30 +1,37 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import LeftSide from '../LeftSide/LeftSide';
-// import CoursesDetails from '../CoursesDetailsq/CoursesDetails';
+import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
+import './CoursesDetails.css'
 import { useLoaderData } from 'react-router-dom';
 
 const CoursesDetails = () => {
-    const courses=useLoaderData();
+    const courses = useLoaderData();
+    console.log(courses)
+    const { title, img, details, price } = courses;
     return (
         <div>
-            <h3>details</h3>
             <Container>
                 <Row>
-                    <Col lg='2' className='d-none d-lg-block'>
+                    <Col lg='2'>
                         <LeftSide></LeftSide>
                     </Col>
-                    <Col lg='10'>
-                      {/* <div className='card-grid'>
-                        {
-                            courses.map(course =><CoursesDetails key={course.id} course={course}></CoursesDetails>)
-
-                           
-                        }
-                      </div> */}
-                    
+                    <Col lg='8'>
+                        <div >
+                            <Card  >
+                                <Card.Img variant="top" className='card-img' src={img} />
+                                <Card.Body>
+                                    <Card.Title>{title}</Card.Title>
+                                    <Card.Text>
+                                        {details}
+                                    </Card.Text>
+                                    <h2 className='p-2'>Prices:${price}</h2>
+                                    <Button className='bg-dark '><Link className='text-decoration-none text-white ' to='/checkout'>Get premium access</Link></Button>
+                                </Card.Body>
+                            </Card>
+                        </div>
                     </Col>
-
                 </Row>
             </Container>
         </div>

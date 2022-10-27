@@ -6,72 +6,81 @@ import FAQ from "../../Pages/FAQ/FAQ";
 import Login from "../../Pages/Login/Login";
 import Courses from "../../Pages/Courses/Courses";
 import Register from "../../Pages/Register/Register";
-import RightSide from "../../Pages/RighSide/RightSide";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import LeftSide from "../../Pages/LeftSide/LeftSide";
 import CoursesDetails from "../../Pages/CoursesDetails/CoursesDetails";
-
-
+import CheckOut from "../../Pages/CheckOut/CheckOut";
+import Category from "../../Pages/Category/Category";
 export const routes = createBrowserRouter([
-
     {
-        path:'/',
-        element:<Main></Main>,
+        path: '/',
+        element: <Main></Main>,
         children: [
             {
-                path:'/',
-                element:<Home></Home>
+                path: '/',
+                element: <Home></Home>
             },
             {
-                path:'/home',
-                element:<Home></Home>,
-                loader:()=>(`http://localhost:5000/courses`)
+                path: '/home',
+                element: <Home></Home>
             },
             {
-                path:'/courses',
-                element:<Courses></Courses>,
-                loader: ()=>fetch (`http://localhost:5000/courses`)
-              
+                path: '/courses',
+                element: <Courses></Courses>,
+                loader: () => fetch(`http://localhost:5000/courses`)
+
             },
             {
-                path:'/leftSide/:id',
-                element:<LeftSide></LeftSide>,
-                loader: ({params})=>fetch (`http://localhost:5000/category/${params.id}`)
-              
+                path: '/category/:id',
+                element: <Category></Category>,
+                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+
             },
             {
-                path:'/blog',
-                element:<Blog></Blog>
+                path: '/leftSide/:id',
+                element: <LeftSide></LeftSide>,
+                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
             },
             {
-                path:'/faq',
-                element:<PrivateRoute><FAQ></FAQ></PrivateRoute>
+                path: '/blog',
+                element: <Blog></Blog>
             },
             {
-                path:'/register',
-                element:<Register></Register>
+                path: '/faq',
+                element: <FAQ></FAQ>
             },
             {
-                path:'/login',
-                element:<Login></Login>
+                path: '/register',
+                element: <Register></Register>
             },
             {
-                path:'/rightside',
-                element:<RightSide></RightSide>
-              
+                path: '/login',
+                element: <Login></Login>
             },
             {
-                path:'/coursesetails',
-                element:<CoursesDetails></CoursesDetails>
-              
+                path: '/courses/:id',
+                element: <CoursesDetails></CoursesDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+
             },
             {
-                path: '*', element:<ErrorPage></ErrorPage>
-               
-              
+                path: '/checkout',
+                element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
+
+            },
+            // {
+            //     path:'/courses/:id',
+            //     element:<CardSummery></CardSummery>,
+            //     loader: ({params})=>fetch (`http://localhost:5000/courses/${params.id}`)
+
+            // },
+            {
+                path: '*', element: <ErrorPage></ErrorPage>
+
+
             }
-            
+
         ]
     }
 

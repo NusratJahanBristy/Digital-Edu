@@ -6,32 +6,34 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 
-
 export const AuthContext = createContext();
 const auth = getAuth(app)
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [loading,setLoading]=useState(true)
+    const [loading, setLoading] = useState(true)
 
     const providerLogin = (provider) => {
         setLoading(true)
         return signInWithPopup(auth, provider)
     }
-const githubSignIn=(githubProvider)=>{
-    return signInWithPopup(auth,githubProvider)
-}
-    const createUser=(email,password)=>{
+    //github sign in 
+    const githubSignIn = (githubProvider) => {
+        return signInWithPopup(auth, githubProvider)
+    }
+    const createUser = (email, password) => {
         setLoading(true)
-        return createUserWithEmailAndPassword(auth,email,password)
+        return createUserWithEmailAndPassword(auth, email, password)
     }
-
-    const signIn=(email,password)=>{
+    //signInWithEmailAndPassword
+    const signIn = (email, password) => {
         setLoading(true)
-        return signInWithEmailAndPassword(auth,email,password)
+        return signInWithEmailAndPassword(auth, email, password)
     }
-    const updateUserProfile=(profile)=>{
-        return updateProfile(auth.currentUser,profile)
+    //updateUserProfile
+    const updateUserProfile = (profile) => {
+        return updateProfile(auth.currentUser, profile)
     }
+    //logOut
     const logOut = () => {
         setLoading(true)
         return signOut(auth);
@@ -39,7 +41,7 @@ const githubSignIn=(githubProvider)=>{
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            console.log(' inside user auth state change', currentUser)
+            console.log('inside user auth state change', currentUser)
             setUser(currentUser)
             setLoading(false)
         })
@@ -48,7 +50,7 @@ const githubSignIn=(githubProvider)=>{
         }
     }, [])
 
-    const authInfo = { user,loading,githubSignIn,updateUserProfile, providerLogin, createUser,signIn,logOut };
+    const authInfo = { user, loading, githubSignIn, updateUserProfile, providerLogin, createUser, signIn, logOut };
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

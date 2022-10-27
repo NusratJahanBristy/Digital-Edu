@@ -13,8 +13,8 @@ const Login = () => {
   const [error, setError] = useState('');
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
-  const location=useLocation()
-const from=location.state?.from?.pathname || '/';
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/';
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -28,7 +28,7 @@ const from=location.state?.from?.pathname || '/';
         console.log(user)
         form.reset();
         setError('');
-        navigate(from,{replace:true});
+        navigate(from, { replace: true });
       })
       .catch(error => {
         console.error(error)
@@ -36,26 +36,20 @@ const from=location.state?.from?.pathname || '/';
       })
   }
   return (
-
     <Form onSubmit={handleSubmit} className='login-form'>
       <h1 className='text-center'>Login</h1>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control name='email' type="email" placeholder="Enter email" required />
-
       </Form.Group>
-
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
         <Form.Control name='password' type="password" placeholder="Password" required />
       </Form.Group>
-
-      
       <Button className='btn-lg btn-dark btn-block' type="submit">
         Login
       </Button>
       <Form.Text className="text-danger">
-      
         {error}
       </Form.Text>
 
