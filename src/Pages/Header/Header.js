@@ -45,7 +45,7 @@ const Header = () => {
           </Nav>
           <Nav>
 
-            <Nav className="me-3">
+            <Nav className="me-3 py-2">
               {color === "light" ? (
                 <button className="border border-light" onClick={handleThemeToggle}>
                   <FaMoon></FaMoon>
